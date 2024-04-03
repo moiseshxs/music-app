@@ -3,110 +3,119 @@ import { StyleSheet } from "react-native";
 export default StyleSheet.create({
     container: {
         flex: 1,
-        flexDirection: 'column',
-        backgroundColor: '#101012',
+        backgroundColor: '#121212',
+        paddingHorizontal: 20,
     },
 
-    Text: {
+    //HEADER STYLE
+    areaHeader: {
+        paddingVertical: 10,
+        justifyContent: 'center',
+    },
+    areaPerfil: {
+        backgroundColor: 'pink',
+        height: 40,
+        width: 40,
+        borderRadius: 100,
+    },
+
+    //RECENTES STYLE
+    areaRecentes: {
+        paddingVertical: 10,
+    },
+    areaPlaylistRecente: {
+        marginBottom: 7,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+    playlist: {
+        backgroundColor: '#292929',
+        height: 55,
+        width: '49%',
+        borderRadius: 10,
+    },
+    playlistFoto: {
+        height: '100%',
+        width: '35%',
+        borderTopStartRadius: 10,
+        borderEndStartRadius: 10,
+        backgroundColor: 'pink',
+    },
+
+    //PARECIDO COM STYLES
+    areaParecidoCom: {
+        paddingVertical: 10,
+    },
+    areaParecidoComBanda: {
+        height: 70,
+        marginBottom: 20,
+        flexDirection: 'row',
+    },
+    areaParecidoComEsq: {
+        height: '100%',
+        width: '20%',
+        justifyContent: 'center',
+    },
+    areaParecidoComFoto: {
+        height: 60,
+        width: 60,
+        borderRadius: 100,
+        backgroundColor: 'pink',
+    },
+    areaParecidoComDir: {
+        height: '100%',
+        width: '80%',
+        paddingHorizontal: 5,
+        
+    },
+    areaParecidoComTitulo: {
+        height: '35%',
+        justifyContent: 'flex-end',
+    },
+    ParecidoComTitulo: {
+        color: '#A6A6A6',
+    },
+    areaParecidoComNome: {
+        height: '65%',
+        justifyContent: 'flex-end',
+    },
+    ParecidoComNome: {
         color: 'white',
         fontWeight: 'bold',
-        fontSize: 25,
-    }, 
-    //Profile
-    areaProfile: {
-        //flex: 1,
-        alignItems: 'center',
+        fontSize: 40,
+    },
+    areaAlbum: {
         flexDirection: 'row',
-        paddingHorizontal: 10,
-        paddingTop: 20,
+        justifyContent: 'space-between',
+    },
+    areaCapaAlbum: {
+        
+    },
+    albumFoto: {
+        height: 150,
+        width: 150,
+        
+        backgroundColor: 'pink',
+    },
+    areaAlbumText: {
+        height: 50,
+        justifyContent: 'space-evenly',
+    },
+    nomeArtista: {
+        color: 'white',
     },
 
-    areaFoto: {
-        flex: 1,
+    //RECOMENDACAO 
+
+    areaRecomendacao: {
+        paddingVertical: 10,
     },
-    iconPerfil: {
-        width: 40,
+    areaTituloRecomendacao: {
         height: 40,
-        borderRadius: 50,
     },
-
-    areaText: {
-        flex: 4,
-    },
-    TextWelcome: {
-        fontSize: 20,
-        textAlign: 'left',
-    }, 
-    areaConfig: {
-        flex: 1,
-        alignItems: 'center',
-        backgroundColor: 'none',
-        borderRadius: 50,
-        height: 40,
-        width: 40,
-        borderWidth: 2,
-        borderColor: 'white',
-    },
-
-    //Artist
-    areaArtists: {
-        flex: 1,
-        marginTop: 20,
-        justifyContent: 'start',
-        paddingStart: 10,
-      },      
-
-    areaTitle: {
-        paddingTop: 10,
-        marginBottom: 20,
-    },
-
-    areaPics: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-around',
-    },
-
-    artists: {
-        height: 100,
-        width: 100,
-        borderRadius: 50,
-    },
-    cont: {
-        marginRight: 20,
-    },
-      
-    nameArt: {
-        fontSize: 15,
-        textAlign: 'center',
-        marginTop: 5,
-    },
-      
-      
-    //recentes
-    areaRecentes: {
-        flex: 1,
-        marginTop: 10,
-        justifyContent: 'start',
-        paddingStart: 10,
-    },
-
-    areaUsual: {
-        flexDirection: 'row',
-        alignItems: 'center',
-    },
-
-    nameAlbum: {
-        fontSize: 20,
-        textAlign: 'left',
-        marginTop: 8,
-    },
-    album: {
-        height: 130,
-        width: 130,
-    },
-    nameArtist: {
-        fontSize: 15,
-        color: 'grey',
+    textRecomendacao: {
+        fontSize: 23,
+        fontWeight: 'bold',
+        color: 'white',
     },
 });
