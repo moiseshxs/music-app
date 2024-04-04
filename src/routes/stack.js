@@ -6,6 +6,7 @@ import Login from '../pages/login';
 import Cadastrar from '../pages/login/cadastrar';
 import Entrar from '../pages/login/entrar';
 import Loading from '../pages/loading';
+import Perfil from '../pages/perfil';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,7 +21,7 @@ export default function StackRoutes() {
         }}
       />
 
-<Stack.Screen
+      <Stack.Screen
         name='Loading'
         component={Loading}
         options={{
@@ -51,6 +52,7 @@ export default function StackRoutes() {
           headerShown: true,
           headerStyle: {
             backgroundColor: '#121212',
+            borderBottomWidth: 0,
           },
           headerTintColor: '#fff',
           headerTitleStyle: {
@@ -64,6 +66,23 @@ export default function StackRoutes() {
         component={Cadastrar}
         options={{
 
+        }}
+      />
+
+      <Stack.Screen
+        name='Perfil'
+        component={Perfil}
+        options={{
+          headerShown: true,
+          headerStyle: {
+            backgroundColor: '#121212',
+            borderBottomWidth: 0,
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            color: '#121212',
+          },
         }}
       />
     </Stack.Navigator>

@@ -1,19 +1,23 @@
 import React from 'react';
-import { Text, View, SafeAreaView, Image, TouchableOpacity, FlatList, ScrollView, StatusBar } from 'react-native';
+import { Text, View, SafeAreaView, Image, ScrollView, TouchableOpacity,StatusBar } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import styles from './styles';
 
 export default function Home() {
+  const navigation = useNavigation();
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.container}>
         <ScrollView>
-          <StatusBar barStyle="light-conten" />
+          <StatusBar barStyle="light-content" />
 
           <View style={styles.areaHeader}>
-            <View style={styles.areaPerfil}>
+            <TouchableOpacity onPress={() => navigation.navigate("Perfil")}>
+              <View style={styles.areaPerfil}>
 
-            </View>
+              </View>
+            </TouchableOpacity>
           </View>
 
           <View style={styles.areaRecentes}>

@@ -9,34 +9,69 @@ export default StyleSheet.create({
 
     //HEADER STYLE
     areaHeader: {
+        flex: 1,
         paddingVertical: 10,
-        justifyContent: 'center',
     },
     areaCabecalho: {
+        flex: 2,
         flexDirection: 'row',
-        marginBottom: 15,
     },
-    areaPerfil: {
-        backgroundColor: 'pink',
-        height: 40,
-        width: 40,
-        borderRadius: 100,
-    },
-    areaTitulo: {
-        paddingHorizontal: 10,
+    areaFoto: {
+        flex: 1,
         justifyContent: 'center',
     },
-    titulo: {
+    foto: {
+        backgroundColor: 'pink',
+        height: 100,
+        width: 100,
+        borderRadius: 100,
+    },
+    areaInfos: {
+        flex: 2,
+        paddingTop: 10,
+    },
+    areaNome: {
+        flex: 1,
+        justifyContent: 'flex-end',
+    },
+    areaSeguidor: {
+        flex: 1,
+    },
+    textNome: {
         color: 'white',
         fontSize: 25,
         fontWeight: 'bold',
     },
+    textSeguidor: {
+        fontSize: 15,
+        color: '#A0A6A4',
+    },
+    bold: {
+        color: 'white',
+        fontWeight: 'bold',
+    },
 
-    //INPUT STYLE
-    input: {
-        borderRadius: 5,
-        backgroundColor: 'white',
-        height: 40,
-        paddingHorizontal: 20,
+    areaEditar: {
+        flex: 1,
+        justifyContent: 'center',
+    },
+    botao: {
+        borderWidth: 2,
+        borderColor: '#707271',
+        height: 30,
+        width: 60,
+        borderRadius: 100,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    textBotao: {
+        color: 'white',
+        fontWeight: 'bold',
+    },
+
+    //PLAYLIST STYLE
+    areaPlaylist: {
+        flex: 3,
+        justifyContent: 'center',
     },
 });
