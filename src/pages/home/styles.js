@@ -94,8 +94,7 @@ export default StyleSheet.create({
     albumFoto: {
         height: 150,
         width: 150,
-        
-        backgroundColor: 'pink',
+        backgroundColor: 'pink'
     },
     areaAlbumText: {
         height: 50,
@@ -103,6 +102,9 @@ export default StyleSheet.create({
     },
     nomeArtista: {
         color: 'white',
+    },
+    espaco:{
+        marginRight: 20,
     },
 
     //RECOMENDACAO 

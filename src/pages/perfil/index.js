@@ -10,10 +10,12 @@ import {
 } from "react-native";
 import styles from "./styles";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import axios from 'axios';
 
 export default function Perfil() {
   const [user, setUser] = useState(null);
   const [username, setUsername] = useState('');
+
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   useEffect(() => {
@@ -22,6 +24,7 @@ export default function Perfil() {
         const userData = await AsyncStorage.getItem("user");
         if (userData !== null) {
           setUser(JSON.parse(userData));
+          setUsername(JSON.parse(userData).username);
         }
       } catch (error) {
         console.error("Erro ao obter informações do usuário", error);
@@ -32,28 +35,47 @@ export default function Perfil() {
   }, []);
 
   const salvar = async () => {
+    const userId = await AsyncStorage.getItem('userId');
+  
     const dadosUser = {
+      id: userId,
       username: username,
     };
-
+  
     const axiosConfig = {
       headers: {
-        /*         'Accept': 'application/json',
-         */ "Content-Type": "application/x-www-form-urlencoded",
+        "Content-Type": "application/x-www-form-urlencoded",
       },
     };
+  
     try {
-      const response = await axios.post(
-        "http://localhost:9000/api/clienteUpdate",
+      // Atualizar no banco de dados
+      const response = await axios.put(
+        `http://localhost:9000/api/clienteUpdate/${userId}`,
         dadosUser,
         axiosConfig
       );
+  
       console.log(response.data);
+  
+      // Atualizar no AsyncStorage
+      const userData = await AsyncStorage.getItem("user");
+      if (userData !== null) {
+        const userObject = JSON.parse(userData);
+        userObject.username = username; // Atualize o nome de usuário no objeto do usuário
+        await AsyncStorage.setItem("user", JSON.stringify(userObject)); // Salve o objeto atualizado no AsyncStorage
+      }
+  
+      // Fechar o modal após a atualização
+      setIsModalVisible(false);
+  
+      return true;
     } catch (error) {
       console.error("Erro ao atualizar", error);
       return false;
     }
   };
+  
 
   return (
     <SafeAreaView style={styles.container}>
@@ -107,7 +129,7 @@ export default function Perfil() {
                   </View>
 
                   <View style={styles.areaModalBotao2}>
-                    <TouchableOpacity onPress={salvar()}>
+                    <TouchableOpacity onPress={() => {salvar()}}>
                       <Text style={styles.textBotaoModal}>Salvar</Text>
                     </TouchableOpacity>
                   </View>
