@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Text,
   View,
@@ -11,9 +11,14 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import styles from "./styles";
+import axios from "axios";
+
+
 
 import ARTIST_DATA from "../../../components/artista";
 import ALBUM_DATA from "../../../components/album";
+
+
 
 const Album = ({ nome, foto, artistas }) => (
   <TouchableOpacity style={styles.espaco} onPress={() => alert("Album")}>
@@ -21,23 +26,51 @@ const Album = ({ nome, foto, artistas }) => (
     <View style={styles.areaAlbumText}>
       <Text style={styles.nomeArtista}>{nome}</Text>
       <Text style={styles.ParecidoComTitulo}>
-        Álbum •{" "}
-        {artistas ? artistas.map((artist) => artist.nome).join(", ") : ""}
+        Álbum •
+        {artistas}
       </Text>
     </View>
   </TouchableOpacity>
 );
 
+
 export default function Home() {
+  const [album, setAlbum] = useState([]);
   const navigation = useNavigation();
+  const albumPegador = async () => {
+
+    const axiosConfig = {
+      headers: {
+        // "Content-Type": "application/x-www-form-urlencoded"
+        "Accept": "application/json"
+      },
+    };
+
+    try {
+      const response = await axios.get(
+        "http://localhost:9000/api/albumIndex",
+        null,
+        axiosConfig
+      );
+      setAlbum(response.data.albums)
+    } catch (error) {
+      console.error("Erro", error);
+      return false;
+    }
+  };
+  useState(() => {
+    albumPegador();
+  })
+
+  console.log(album, "CONSOLE DO ALBUM")
 
   // Mapeando os artistas nos álbuns
   const albumsWithArtists = ALBUM_DATA.map((album) => {
     const artistasDoAlbum = album.artistas
       ? album.artistas.map((artistId) => {
-          const artista = ARTIST_DATA.find((a) => a.id === artistId);
-          return artista;
-        })
+        const artista = ARTIST_DATA.find((a) => a.id === artistId);
+        return artista;
+      })
       : [];
 
     return {
@@ -103,10 +136,10 @@ export default function Home() {
 
             <View style={styles.areaAlbum}>
               <FlatList
-                data={albumsWithArtists}
+                data={album}
                 renderItem={({ item }) => (
                   <Album
-                    nome={item.nomeAlbum}
+                    nome={item.nome_album}
                     foto={item.fotoAlbum}
                     artistas={item.artistas}
                   />
@@ -127,10 +160,10 @@ export default function Home() {
 
             <View style={styles.areaAlbum}>
               <FlatList
-                data={albumsWithArtists}
+                data={album}
                 renderItem={({ item }) => (
                   <Album
-                    nome={item.nomeAlbum}
+                    nome={item.nome_album}
                     foto={item.fotoAlbum}
                     artistas={item.artistas}
                   />
@@ -150,10 +183,10 @@ export default function Home() {
 
             <View style={styles.areaAlbum}>
               <FlatList
-                data={albumsWithArtists}
+                data={album}
                 renderItem={({ item }) => (
                   <Album
-                    nome={item.nomeAlbum}
+                    nome={item.nome_album}
                     foto={item.fotoAlbum}
                     artistas={item.artistas}
                   />
@@ -171,10 +204,10 @@ export default function Home() {
 
             <View style={styles.areaAlbum}>
               <FlatList
-                data={albumsWithArtists}
+                data={album}
                 renderItem={({ item }) => (
                   <Album
-                    nome={item.nomeAlbum}
+                    nome={item.nome_album}
                     foto={item.fotoAlbum}
                     artistas={item.artistas}
                   />

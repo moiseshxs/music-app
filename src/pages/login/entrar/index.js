@@ -8,15 +8,15 @@ import axios, { Axios } from 'axios';
 
 export default function Entrar() {
 
-    const [email, setEmail] = useState('');
-    const [senha, setSenha] = useState('');
+    const [email_cliente, setEmail_cliente] = useState('');
+    const [senha_cliente, setSenha_cliente] = useState('');
     const navigation = useNavigation();
 
     const login = async () => {
 
         const dadosUser = {
-            'email': email,
-            'senha': senha,
+            'email_cliente': email_cliente,
+            'senha_cliente': senha_cliente,
         };
 
         const axiosConfig = {
@@ -50,15 +50,15 @@ export default function Entrar() {
                         <Text style={styles.textInput}>E-mail ou nome de usuário</Text>
                         <TextInput
                             style={styles.input}
-                            onChangeText={setEmail} value={email}
+                            onChangeText={setEmail_cliente} value={email_cliente}
                         />
                     </View>
                     <View style={styles.areaInput}>
-                        <Text style={styles.textInput}>Senha</Text>
+                        <Text style={styles.textInput}>Senha_cliente</Text>
                         <TextInput
                             style={styles.input}
                             secureTextEntry={true}
-                            onChangeText={setSenha} value={senha}
+                            onChangeText={setSenha_cliente} value={senha_cliente}
                         />
                     </View>
                 </View>

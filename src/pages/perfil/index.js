@@ -14,7 +14,7 @@ import axios from 'axios';
 
 export default function Perfil() {
   const [user, setUser] = useState(null);
-  const [username, setUsername] = useState('');
+  const [nome_cliente, setNome_cliente] = useState('');
 
   const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -24,7 +24,7 @@ export default function Perfil() {
         const userData = await AsyncStorage.getItem("user");
         if (userData !== null) {
           setUser(JSON.parse(userData));
-          setUsername(JSON.parse(userData).username);
+          setNome_cliente(JSON.parse(userData).nome_cliente);
         }
       } catch (error) {
         console.error("Erro ao obter informações do usuário", error);
@@ -39,7 +39,7 @@ export default function Perfil() {
   
     const dadosUser = {
       id: userId,
-      username: username,
+      nome_cliente: nome_cliente,
     };
   
     const axiosConfig = {
@@ -62,7 +62,7 @@ export default function Perfil() {
       const userData = await AsyncStorage.getItem("user");
       if (userData !== null) {
         const userObject = JSON.parse(userData);
-        userObject.username = username; // Atualize o nome de usuário no objeto do usuário
+        userObject.nome_cliente = nome_cliente; // Atualize o nome de usuário no objeto do usuário
         await AsyncStorage.setItem("user", JSON.stringify(userObject)); // Salve o objeto atualizado no AsyncStorage
       }
   
@@ -89,7 +89,7 @@ export default function Perfil() {
 
             <View style={styles.areaInfos}>
               <View style={styles.areaNome}>
-                <Text style={styles.textNome}>{user ? user.username : ""}</Text>
+                <Text style={styles.textNome}>{user ? user.nome_cliente : ""}</Text>
               </View>
 
               <View style={styles.areaSeguidor}>
@@ -147,8 +147,8 @@ export default function Perfil() {
                     <View style={styles.areaInputModal}>
                       <TextInput
                         style={styles.input}
-                        onChangeText={setUsername}
-                        value={username}
+                        onChangeText={setNome_cliente}
+                        value={nome_cliente}
                       />
                     </View>
                   </View>
